@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Player</title>
+    <link rel="icon" type="image/png" href="video-player.png">
+
+
+</head>
+
+
+    <style>
+
+        .sidebar a:visited {
+  color: red !important;
+}
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: #333;
+        }
+        #sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #333;
+  color: white;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+
+  font-size: 15 px;
+  line-height: 1.0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+
+}
+        #main {
+            margin-left: 200px;
+            padding: 20px;
+            margin-right: 200px; /* added */
+            background-color: #333;
+
+        }
+
+
+        #rightSidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #333;
+    color: white;
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+#topSidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    bottom: 10px;
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+h3 {
+    text-align: center;
+
+}
+
+ul {
+  list-style-type:none;
+  margin:0 auto;
+  padding:0;
+  width:fit-content;
+}
+
+li {
+  display:inline-block;
+  color: white;
+  font-size: 15 px;
+  line-height: 1.0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+li a {
+    display: block;
+  color: white;
+  line-height: 1.5;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+.content {
+ margin-top:50px;
+ padding-left:10px;
+ padding-right:10px;
+}
+
+
+
+#url {
+        word-wrap: break-word;
+    }
+
+    #sidebar-bottom  {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+
+  padding: 0px;
+  box-sizing: border-box;
+  padding-bottom: 5px;
+
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+}
+
+#playlistItems li {
+            font-weight: bold;
+            text-decoration: underline;
+            line-height: 1.5;
+            margin-bottom: 0.5em;
+
+        }
+
+        #recentFiles li {
+    font-weight: bold;
+    /* text-decoration: underline; */
+    margin-bottom: 0.5em;
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  }
+
+    </style>
+</head>
+<body>
+
+    <div id="sidebar"><br></br>
+
+        <h3>Playlist</h3>
+       <!-- Add the HTML elements to display the current video file and playlist -->
+       <ul id="playlistItems"></ul>
+
+
+    </div>
+    <div id="main">
+
+
+        <video id="myVideo" width="1472" height="828" controls></video>
+
+    </div>
+
+    <div id="rightSidebar">
+
+    <br></br>
+        <b><p>Right Menu</p></b>
+
+        <button onclick="generateRandomNumber()">Generate Random Number</button>
+        <br>
+        <p><b>Random Number:</b><br></br> <span id="randomNumber"></span></p>
+<p><b>Current Date, Time and Day</b></p>
+<p id="currentDateTime"></p>
+    <!-- <p><b>Zodiac Sign Of The Month:</b>
+    <p id="zodiacSign"></p>
+    <p><b>Sumerian Time</b></p>
+ <p id="sumerianDateTime"></p> -->
+ <p><b>Recent Files</b></p>
+ <ul id="recentFiles"></ul>
+</div>
+
+
+<centre><div id="topSidebar">
+  <ul>
+
+
+
+      <p style="font-size: 20px;">
+        <input id="fileInput" type="file" accept="video/*" multiple style="display: none;">
+        <!-- <b>Video Player</b>&nbsp&nbsp&nbsp&nbsp -->
+        <button id="playButton">Play</button>
+        <button id="pauseButton">Pause</button>
+            <button id="stopButton">Stop</button>
+            <button id="prevButton">Previous</button>
+            <button id="nextButton">Next</button>
+            <button id="clearButton">Clear Playlist</button>
+            <button id="muteButton">Mute</button>
+            <button id="loopAll">Loop All</button>
+        <button id="loopOne">Loop One</button>
+        <button id="noLoop">No Loop</button>
+      <button id="playlistButton">Select Playlist</button>&nbsp&nbsp&nbsp&nbsp
+     <b>Now playing: <span id="currentVideo"></span></b></p>
+
+  </ul>
+
+  </div></centre>
+  <br><br>
+
+  <footer>
+
+    <style>
+
+
+
+
+        </style>
+
+    <div id="sidebar-bottom">
+        <li><b><a href="texteditor.html" target="_blank">Text Editor</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="videoplayer.html" target="_blank">Video Player</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="imageviewer.html" target="_blank">Image Viewer</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="file-transfer-speed-calculator.html" target="_blank">File Transfer Speed Calculator</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="calculator.html" target="_blank">Calculator</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="https://outlook.live.com/mail/0/" target="_blank">Outlook</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="https://www.office.com/?auth=1" target="_blank">Office 365</a></b></li>&nbsp;&nbsp;
+    <li><b><a href="https://onedrive.live.com/" target="_blank">OneDrive</a></b></li>&nbsp;&nbsp;
+    <li> <b><a href="https://drive.google.com/drive/my-drive" target="_blank">Google Drive</a></b></li>
+    </div>
+
+</footer>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+
+    <script>
+        function generateRandomNumber() {
+          var randomNumber = Math.floor(Math.random() * 255) + 1;
+          document.getElementById("randomNumber").innerHTML = randomNumber;
+        }
+
+        document.getElementById('muteButton').addEventListener('click', function () {
+          myVideo.muted = !myVideo.muted;
+          if (myVideo.muted) {
+            document.getElementById('muteButton').textContent = "Unmute";
+          } else {
+            document.getElementById('muteButton').textContent = "Mute";
+          }
+        });
+
+        function saveAccessTime(fileName) {
+          localStorage.setItem(fileName + '_accessTime', Date.now());
+        }
+
+        function displayRecentFiles() {
+          const recentFilesContainer = document.getElementById('recentFiles');
+          const recentFiles = [];
+
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key.endsWith('_accessTime')) {
+              recentFiles.push({
+                name: key.replace('_accessTime', ''),
+                accessTime: localStorage.getItem(key),
+              });
+            }
+          }
+
+          recentFiles.sort((a, b) => b.accessTime - a.accessTime).slice(0, 10).forEach(file => {
+            const listItem = document.createElement('li');
+            listItem.textContent = file.name;
+            recentFilesContainer.appendChild(listItem);
+          });
+        }
+
+        displayRecentFiles();
+
+        setInterval(updateDateTime, 1000);
+
+        function updateDateTime() {
+          var dateTimeElement = document.getElementById("currentDateTime");
+          var date = new Date();
+          var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+          dateTimeElement.textContent = date.toLocaleString('en-US', options);
+        }
+
+        var fileInput = document.getElementById("fileInput");
+        var playlistButton = document.getElementById("playlistButton");
+        var myVideo = document.getElementById("myVideo");
+        var defaultVolume = 0.25;
+        myVideo.volume = defaultVolume;
+        var currentVideo = document.getElementById("currentVideo");
+        var videoUrls = [];
+        var currentVideoIndex = 0;
+        var playlistItems = document.getElementById("playlistItems");
+
+        var loopMode = 'loopAll'; // Set loopAll as the default mode
+        var loopAllBtn = document.getElementById('loopAll');
+        var loopOneBtn = document.getElementById('loopOne');
+        var noLoopBtn = document.getElementById('noLoop');
+
+        playlistButton.addEventListener("click", function () {
+          videoUrls = [];
+          currentVideoIndex = 0;
+          fileInput.click();
+        });
+
+        fileInput.addEventListener("change", function () {
+          var files = this.files;
+          for (var i = 0; i < files.length; i++) {
+            var fileURL = URL.createObjectURL(files[i]);
+            videoUrls.push(fileURL);
+          }
+          addPlaylistItems();
+
+          playVideoAtIndex(currentVideoIndex);
+        });
+
+        function addPlaylistItems() {
+          playlistItems.innerHTML = '';
+          for (var i = 0; i < fileInput.files.length; i++) {
+            var listItem = document.createElement('li');
+            listItem.textContent = fileInput.files[i].name;
+            listItem.dataset.index = i;
+
+            listItem.addEventListener('click', function () {
+              var index = parseInt(this.dataset.index);
+              playVideoAtIndex(index);
+            });
+
+            playlistItems.appendChild(listItem);
+          }
+        }
+
+        function playVideoAtIndex(index) {
+  currentVideoIndex = index;
+  myVideo.src = videoUrls[currentVideoIndex];
+
+  function onCanPlayThrough() {
+    myVideo.currentTime = getPlaybackTime(fileInput.files[currentVideoIndex].name);
+    myVideo.play();
+    myVideo.removeEventListener('canplaythrough', onCanPlayThrough);
+  }
+
+  myVideo.addEventListener('canplaythrough', onCanPlayThrough);
+
+  currentVideo.textContent = fileInput.files[currentVideoIndex].name;
+  updateDocumentTitle(fileInput.files[currentVideoIndex].name);
+  saveAccessTime(fileInput.files[currentVideoIndex].name); // Save access time when a video is played
+}
+
+
+function playNextVideo() {
+  var nextVideoIndex = (currentVideoIndex + 1) % videoUrls.length;
+  playVideoAtIndex(nextVideoIndex);
+}
+
+function playPrevVideo() {
+  var prevVideoIndex = (currentVideoIndex - 1 + videoUrls.length) % videoUrls.length;
+  playVideoAtIndex(prevVideoIndex);
+}
+
+function updateDocumentTitle(title) {
+  document.title = title;
+}
+
+function savePlaybackTime(fileName, currentTime) {
+  localStorage.setItem(fileName, currentTime);
+}
+
+function getPlaybackTime(fileName) {
+  var playbackTime = parseFloat(localStorage.getItem(fileName)) || 0;
+  return playbackTime;
+}
+
+myVideo.addEventListener('timeupdate', function () {
+  savePlaybackTime(fileInput.files[currentVideoIndex].name, myVideo.currentTime);
+});
+
+document.getElementById('playButton').addEventListener('click', function () {
+  myVideo.play();
+});
+
+document.getElementById('pauseButton').addEventListener('click', function () {
+  myVideo.pause();
+});
+
+document.getElementById('stopButton').addEventListener('click', function () {
+  myVideo.pause();
+  myVideo.currentTime = 0;
+});
+
+document.getElementById('nextButton').addEventListener('click', function () {
+  playNextVideo();
+});
+
+document.getElementById('prevButton').addEventListener('click', function () {
+  playPrevVideo();
+});
+
+var clearButton = document.getElementById("clearButton");
+clearButton.addEventListener("click", function () {
+  videoUrls = [];
+  currentVideoIndex = 0;
+  playlistItems.innerHTML = "";
+});
+
+loopAllBtn.addEventListener('click', () => {
+  loopMode = 'loopAll';
+  myVideo.loop = false;
+});
+
+loopOneBtn.addEventListener('click', () => {
+  loopMode = 'loopOne';
+  myVideo.loop = true;
+});
+
+noLoopBtn.addEventListener('click', () => {
+  loopMode = 'noLoop';
+  myVideo.loop = false;
+});
+
+myVideo.addEventListener('ended', () => {
+  if (loopMode === 'loopAll') {
+    playNextVideo();
+  }
+});
+</script>
+
+
+
+
+
+</body>
+</html>
