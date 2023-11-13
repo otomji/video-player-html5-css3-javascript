@@ -27,3 +27,5 @@ Video player features are as follows:
     • Picture in Picture support natively or through the chrome addon
     • Links to the Text Editor, Video Player, Image Viewer, File Transfer Speed Calculator that will be added at a later date
     • Direct links the Outlook email, Office 365, OneDrive and Google Drive.
+
+![video-player-screenshot](https://github.com/otomji/video-player-html5-css3-javascript/assets/150708884/875277f8-f4cd-4003-8a47-e6ebe78d21f1)
